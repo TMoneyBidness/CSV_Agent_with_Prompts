@@ -11,5 +11,11 @@ pip install -r requirements.txt
 ```
 
 ## Interface
-
-
+![Headings](https://github.com/TMoneyBidness/CSV_Agent_with_Prompts/blob/5524a311aa3b51560539b65914da025cf431ca6a/screenshots/csv_headings.png)
+---
+![Prompts](https://github.com/TMoneyBidness/CSV_Agent_with_Prompts/blob/5524a311aa3b51560539b65914da025cf431ca6a/screenshots/csv_prompts.png)
+---
+![Query](https://github.com/TMoneyBidness/CSV_Agent_with_Prompts/blob/5524a311aa3b51560539b65914da025cf431ca6a/screenshots/csv_query.png)
+---
+![Answer](https://github.com/TMoneyBidness/CSV_Agent_with_Prompts/blob/5524a311aa3b51560539b65914da025cf431ca6a/screenshots/csv_query_answer.png)
+---
