@@ -1,28 +1,22 @@
 # Standard Library Imports
+import json
 import os
 import re
 import time
 import warnings
 
-# Standard Library Imports
-import os
-import pandas as pd
-from dotenv import load_dotenv
-import streamlit as st
-from langchain.agents import create_pandas_dataframe_agent
-
-
 # Third-Party Library Imports
 import numpy as np
 import pandas as pd
-import json
 from dotenv import load_dotenv
 import streamlit as st
-import streamlit as st
-from langchain.chat_models import ChatOpenAI
-from langchain import LLMChain, PromptTemplate, OpenAI
 
 # Langchain Library Imports
+from langchain import (
+    LLMChain,
+    PromptTemplate,
+    OpenAI,
+)
 from langchain.agents import (
     initialize_agent,
     Tool,
@@ -35,10 +29,6 @@ from langchain.agents import (
 )
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import RetrievalQA
-from langchain import (
-    LLMChain,
-    PromptTemplate,
-)
 
 ############################################################################################################
 # Load environment variables
@@ -61,7 +51,6 @@ def load_data(path):
     except Exception as e:
         print(f"Error occurred: {e}")
         return None
-
 
 def get_headings(df):
     headings = df.columns.tolist()
@@ -94,11 +83,13 @@ def df_agent(df, agent_context, describe_dataset, query):
 
 
 ############################################################################################################
-# STREAMLIT APP
-st.title("👨‍💻 Chat with your CSV")
-st.write("Please upload your CSV file below.")
 
-uploaded_file = st.file_uploader("Upload a CSV")
+# STREAMLIT APP
+st.title("👨‍💻 Query your CSV with an AI Agent using Langchain")
+st.write("Beyond a basic CSV Agent to query your tabular data, this app allows you to provide a prompt to the agent, preview headings, provide task objectives, and contextual information about your data.")
+# st.write("Please upload your CSV file below.")
+
+uploaded_file = st.file_uploader("Please upload your CSV file below")
 
 if uploaded_file is not None:
     if uploaded_file.size == 0:
@@ -119,7 +110,7 @@ headings_list = st.text_area(label="Headings", value=st.session_state.headings_l
 
 
 describe_dataset = st.text_area("Please describe your dataset. e.g., 'This is Amazon sales data that contains XYZ.'")
-objectives = st.text_area("Describe your objectives. e.g., 'I am specifically looking for data insights related to overlooked ratios, key performance indicators, or hidden inishgts. Test correlations or complete data analysis when required.'")
+objectives = st.text_area("Describe your objectives. e.g., 'I am specifically looking for data insights related to overlooked ratios, key performance indicators, or hidden insights. Test correlations or complete data analysis when required.'")
 agent_context = st.text_area("Agent context prompt. e.g., 'You are a skilled data scientist. You are looking for trends, ratios, and actionable insights into the data. Your answers will result in marketing spend decisions, so be as specific as possible.'")
 query = st.text_area("Type your query")
 
@@ -159,4 +150,5 @@ if st.session_state.data is not None:
             markdown_html = f'<div class="custom-markdown">{dataframe_insights}</div>'
             st.markdown(markdown_style, unsafe_allow_html=True)
             st.markdown(markdown_html, unsafe_allow_html=True)
+
 
