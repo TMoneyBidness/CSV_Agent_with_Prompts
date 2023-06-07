@@ -18,7 +18,7 @@ pip install -r requirements.txt
 <p align="center">
 <img src='https://github.com/TMoneyBidness/CSV_Agent_with_Prompts/blob/5524a311aa3b51560539b65914da025cf431ca6a/screenshots/csv_headings.png' width='700'>
 </p>
----
+<center>---</center>
 <p align="center">
 <img src='https://github.com/TMoneyBidness/CSV_Agent_with_Prompts/blob/5524a311aa3b51560539b65914da025cf431ca6a/screenshots/csv_prompts.png' width='700'>
 </p>
