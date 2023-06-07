@@ -34,6 +34,7 @@ from langchain.chains import RetrievalQA
 # Load environment variables
 
 # HOSTED
+API_KEY = None
 # API_KEY = st.secrets["apikey"]
 
 ############################################################################################################
@@ -68,6 +69,9 @@ def show_headings():
 
 # Function to process the DataFrame and generate insights
 def df_agent(df, agent_context, describe_dataset, query):
+    if API_KEY is None:
+        st.error("Please enter the password or your API key to proceed.")
+        return
     llm = OpenAI(openai_api_key=API_KEY,temperature=0)
     df_agent_research = create_pandas_dataframe_agent(llm, df, handle_parsing_errors=True)
     df_agent_analysis = df_agent_research(
