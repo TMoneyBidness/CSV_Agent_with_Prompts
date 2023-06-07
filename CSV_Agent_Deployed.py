@@ -72,7 +72,8 @@ def df_agent(df, agent_context, describe_dataset, query):
     if API_KEY is None:
         st.error("Please enter the password or your API key to proceed.")
         return
-    llm = OpenAI(openai_api_key=API_KEY,temperature=0)
+    #llm = OpenAI(openai_api_key=API_KEY,temperature=0) <- Trial with ChatGPT 4
+    llm = ChatOpenAI(openai_api_key=API_KEY,temperature=0, model_name='gpt-4')
     df_agent_research = create_pandas_dataframe_agent(llm, df, handle_parsing_errors=True)
     df_agent_analysis = df_agent_research(
         {
