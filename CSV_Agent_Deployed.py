@@ -8,7 +8,6 @@ import warnings
 # Third-Party Library Imports
 import numpy as np
 import pandas as pd
-from dotenv import load_dotenv
 import streamlit as st
 
 # Langchain Library Imports
