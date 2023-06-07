@@ -68,7 +68,7 @@ def show_headings():
 
 # Function to process the DataFrame and generate insights
 def df_agent(df, agent_context, describe_dataset, query):
-    llm = OpenAI(openai_api_key=API_KEY, model_name'gpt-4')
+    llm = OpenAI(openai_api_key=API_KEY, model_name'gpt-3.5-turbo')
     df_agent_research = create_pandas_dataframe_agent(llm, df, handle_parsing_errors=True)
     df_agent_analysis = df_agent_research(
         {
