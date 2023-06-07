@@ -117,12 +117,12 @@ if st.button("PREVIEW HEADINGS", type="secondary", help="Click to preview headin
 # Display the headings text area
 headings_list = st.text_area(label="Headings", value=st.session_state.headings_list, key="headings")
 
-
 describe_dataset = st.text_area("Please describe your dataset. e.g., 'This is Amazon sales data that contains XYZ.'")
 objectives = st.text_area("Describe your objectives. e.g., 'I am specifically looking for data insights related to overlooked ratios, key performance indicators, or hidden insights. Test correlations or complete data analysis when required.'")
 agent_context = st.text_area("Agent context prompt. e.g., 'You are a skilled data scientist. You are looking for trends, ratios, and actionable insights into the data. Your answers will result in marketing spend decisions, so be as specific as possible.'")
 query = st.text_area("Type your query")
 
+st.write(type(API_KEY))  # It should print out: <class 'str'>
 
 if st.session_state.data is not None:
     if isinstance(st.session_state.data, pd.DataFrame):
