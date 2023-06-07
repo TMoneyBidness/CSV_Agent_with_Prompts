@@ -32,6 +32,7 @@ from langchain.chains import RetrievalQA
 
 ############################################################################################################
 # Load environment variables
+
 # HOSTED
 API_KEY = st.secrets["apikey"]
 
@@ -64,10 +65,11 @@ def show_headings():
         headings = get_headings(st.session_state.data)
         st.session_state.headings_list = "\n".join(headings)
 
+
 # Function to process the DataFrame and generate insights
-def df_agent(data, agent_context, describe_dataset, query):
+def df_agent(df, agent_context, describe_dataset, query):
     llm = OpenAI(openai_api_key=API_KEY)
-    df_agent_research = create_pandas_dataframe_agent(llm, data, verbose=True, handle_parsing_errors=True)
+    df_agent_research = create_pandas_dataframe_agent(llm, df, verbose=True, handle_parsing_errors=True)
     df_agent_analysis = df_agent_research(
         {
             "input": f"You are DataFrameAI, the most advanced dataframe analysis agent on the planet. You are collaborating with a company to provide skilled, in-depth data analysis on a large table. They are looking to gain competitive business insights from this data, in order to gain an edge over their competitors. They are looking to analyze trends, ratios, hidden insights, and more. \
@@ -86,16 +88,9 @@ def df_agent(data, agent_context, describe_dataset, query):
 # STREAMLIT APP
 st.title("👨‍💻 Query your CSV with an AI Agent using Langchain")
 st.write("Beyond a basic CSV Agent to query your tabular data, this app allows you to provide a prompt to the agent, preview headings, provide task objectives, and contextual information about your data.")
+# st.write("Please upload your CSV file below.")
 
 uploaded_file = st.file_uploader("Please upload your CSV file below")
-
-# # Add a password input
-# password = st.text_input("Enter the password to use the default API key", type='password')
-# # Check if the password is correct
-# if password == 'secret_password':
-#     API_KEY = st.secrets["apikey"]
-# else:
-#     API_KEY = st.text_input("Enter your API key", type='password')
 
 if uploaded_file is not None:
     if uploaded_file.size == 0:
@@ -118,6 +113,7 @@ describe_dataset = st.text_area("Please describe your dataset. e.g., 'This is Am
 objectives = st.text_area("Describe your objectives. e.g., 'I am specifically looking for data insights related to overlooked ratios, key performance indicators, or hidden insights. Test correlations or complete data analysis when required.'")
 agent_context = st.text_area("Agent context prompt. e.g., 'You are a skilled data scientist. You are looking for trends, ratios, and actionable insights into the data. Your answers will result in marketing spend decisions, so be as specific as possible.'")
 query = st.text_area("Type your query")
+
 
 if st.session_state.data is not None:
     if isinstance(st.session_state.data, pd.DataFrame):
@@ -154,5 +150,4 @@ if st.session_state.data is not None:
             markdown_html = f'<div class="custom-markdown">{dataframe_insights}</div>'
             st.markdown(markdown_style, unsafe_allow_html=True)
             st.markdown(markdown_html, unsafe_allow_html=True)
-
 
