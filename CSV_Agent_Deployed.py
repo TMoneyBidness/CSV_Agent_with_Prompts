@@ -64,11 +64,10 @@ def show_headings():
         headings = get_headings(st.session_state.data)
         st.session_state.headings_list = "\n".join(headings)
 
-
 # Function to process the DataFrame and generate insights
-def df_agent(df, agent_context, describe_dataset, query):
+def df_agent(data, agent_context, describe_dataset, query):
     llm = OpenAI(openai_api_key=API_KEY)
-    df_agent_research = create_pandas_dataframe_agent(llm, df, verbose=True, handle_parsing_errors=True)
+    df_agent_research = create_pandas_dataframe_agent(llm, data, verbose=True, handle_parsing_errors=True)
     df_agent_analysis = df_agent_research(
         {
             "input": f"You are DataFrameAI, the most advanced dataframe analysis agent on the planet. You are collaborating with a company to provide skilled, in-depth data analysis on a large table. They are looking to gain competitive business insights from this data, in order to gain an edge over their competitors. They are looking to analyze trends, ratios, hidden insights, and more. \
