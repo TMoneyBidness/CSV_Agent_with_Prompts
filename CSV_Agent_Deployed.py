@@ -33,11 +33,6 @@ from langchain.chains import RetrievalQA
 ############################################################################################################
 # Load environment variables
 
-# Setting up the api key
-import environ
-env = environ.Env()
-environ.Env.read_env()
-
 # HOSTED
 API_KEY = st.secrets["apikey"]
 
