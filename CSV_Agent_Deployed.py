@@ -34,7 +34,7 @@ from langchain.chains import RetrievalQA
 
 # HOSTED
 API_KEY = st.secrets["apikey"]
-llm = OpenAI(openai_api_key=API_KEY)
+
 ############################################################################################################
 
 # Initialize session state variables
@@ -67,6 +67,7 @@ def show_headings():
 
 # Function to process the DataFrame and generate insights
 def df_agent(df, agent_context, describe_dataset, query):
+    llm = OpenAI(openai_api_key=API_KEY)
     df_agent_research = create_pandas_dataframe_agent(llm, df, verbose=True, handle_parsing_errors=True)
     df_agent_analysis = df_agent_research(
         {
