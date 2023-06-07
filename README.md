@@ -6,7 +6,7 @@ This project was just a workhorse for a friend. I'm currently working on a large
 
 Feel free to reach out on [Twitter to collaborate: @TradersCraft](https://twitter.com/TradersCraft)
 
-Note: There is a token limit of 4096, so be gentle. 
+*Note: There is a token limit of 4096, so be gentle. 
 
 ## Requirements
 
