@@ -88,7 +88,6 @@ def df_agent(df, agent_context, describe_dataset, query):
 # STREAMLIT APP
 st.title("👨‍💻 Query your CSV with an AI Agent using Langchain")
 st.write("Beyond a basic CSV Agent to query your tabular data, this app allows you to provide a prompt to the agent, preview headings, provide task objectives, and contextual information about your data.")
-st.write("Please upload your CSV file below.")
 
 uploaded_file = st.file_uploader("Please upload your CSV file below")
 
