@@ -93,7 +93,7 @@ def df_agent(df, agent_context, describe_dataset, query):
 # STREAMLIT APP
 st.title("👨‍💻 Query your CSV with an AI Agent using Langchain")
 st.write("Beyond a basic CSV Agent to query your tabular data, this app allows you to provide a prompt to the agent, preview headings, provide task objectives, and contextual information about your data.")
-st.write("Uses ChatGPT-4, so there is no free version. You need the key, or...hit me up if you're cool and I can give you the password!")
+st.write("Uses OpenAI. You need the key, or...hit me up if you're cool and I can give you the password!")
 
 # Add a password input
 password = st.text_input("Enter the password to use the default API key")
